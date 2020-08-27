@@ -1,4 +1,5 @@
-import SearchArea from "./SearchArea";
 import Card from "./Card";
+import Search from "./Search";
+import MovieDisplay from "./MovieDisplay";
 
-export { SearchArea, Card };
+export { Card, Search, MovieDisplay };
