@@ -1,8 +1,9 @@
 import Head from "next/head";
+import Link from "next/link";
 import styled from "styled-components";
 import { Card } from "../components";
 import { mixins, theme, GlobalStyle } from "../styles";
-import { getTrending } from "../lib/movies";
+import { getTrending, getMovie } from "../lib/movies";
 
 const { colors } = theme;
 
@@ -32,19 +33,25 @@ const Home = ({ trendingMovies }) => {
       <h2>Trending Films: </h2>
       <StyledContainer>
         {trendingMovies &&
-          trendingMovies.slice(0, 5).map((movie, i) => {
-            return (
-              <StyledCardContainer key={i}>
-                <Card
-                  title={movie.title}
-                  releaseDate={movie.release_date}
-                  posterLink={
-                    "http://image.tmdb.org/t/p/w500" + movie.poster_path
-                  }
-                ></Card>
-              </StyledCardContainer>
-            );
-          })}
+          trendingMovies
+            .slice(0, 5)
+            .map(({ id, title, release_date, poster_path }) => {
+              return (
+                <StyledCardContainer key={id}>
+                  <Link href="/movies/[id]" as={`/movies/${id}`}>
+                    <a>
+                      <Card
+                        title={title}
+                        releaseDate={release_date}
+                        posterLink={
+                          "http://image.tmdb.org/t/p/w500" + poster_path
+                        }
+                      ></Card>
+                    </a>
+                  </Link>
+                </StyledCardContainer>
+              );
+            })}
       </StyledContainer>
     </main>
   );
