@@ -1,4 +1,14 @@
+import react, { useRef, useEffect } from "react";
+
 const Search = ({ handleInput, search }) => {
+  const inputElement = useRef(null);
+
+  useEffect(() => {
+    if (inputElement.current) {
+      inputElement.current.focus();
+    }
+  }, []);
+
   return (
     <section>
       <input
@@ -6,6 +16,8 @@ const Search = ({ handleInput, search }) => {
         placeholder="E.g. Spiderman"
         onChange={handleInput}
         onKeyPress={search}
+        ref={inputElement}
+        data-cy="searchBar"
       />
     </section>
   );

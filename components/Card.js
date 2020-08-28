@@ -20,7 +20,7 @@ const StyledImg = styled.img`
 
 const Card = ({ title, releaseDate, posterLink }) => {
   return (
-    <StyledContainer>
+    <StyledContainer data-cy="moviecard">
       <StyledImg src={posterLink} />
       <Details>
         {title}
