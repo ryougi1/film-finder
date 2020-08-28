@@ -1,5 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import theme from "./theme";
+import { createGlobalStyle } from 'styled-components';
+import theme from './theme';
+
 const { colors } = theme;
 
 const GlobalStyle = createGlobalStyle`

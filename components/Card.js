@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { theme } from "../styles";
+import React from 'react';
+import styled from 'styled-components';
+import { theme } from '../styles';
 
 const { colors } = theme;
 
@@ -18,16 +18,15 @@ const StyledImg = styled.img`
   object-fit: cover;
 `;
 
-const Card = ({ title, releaseDate, posterLink }) => {
-  return (
-    <StyledContainer data-cy="moviecard">
-      <StyledImg src={posterLink} />
-      <Details>
-        {title}
-        {"\n"}({releaseDate})
-      </Details>
-    </StyledContainer>
-  );
-};
+const Card = ({ title, releaseDate, posterLink }) => (
+  <StyledContainer data-cy="moviecard">
+    <StyledImg src={posterLink} />
+    <Details>
+      {title}
+      {'\n'}
+      {releaseDate}
+    </Details>
+  </StyledContainer>
+);
 
 export default Card;

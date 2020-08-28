@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { Search, MovieDisplay } from "../components";
-import { GlobalStyle } from "../styles";
-import { getTrending } from "../lib/movies";
+import React, { useState } from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { Search, MovieDisplay } from '../components';
+import { GlobalStyle } from '../styles';
+import { getTrending } from '../lib/movies';
 
 export async function getServerSideProps() {
   const trendingMovies = await getTrending();
@@ -11,7 +11,7 @@ export async function getServerSideProps() {
 }
 
 const Home = ({ trendingMovies }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const router = useRouter();
 
   const handleInput = (e) => {
@@ -19,9 +19,9 @@ const Home = ({ trendingMovies }) => {
   };
 
   const search = (e) => {
-    if (e.key === "Enter" && query.length > 0) {
-      const sanQuery = query.replace(/\s/g, "+");
-      router.push("/search/[query]", "/search/" + sanQuery);
+    if (e.key === 'Enter' && query.length > 0) {
+      const sanQuery = query.replace(/\s/g, '+');
+      router.push('/search/[query]', `/search/${sanQuery}`);
     }
   };
 
@@ -30,7 +30,7 @@ const Home = ({ trendingMovies }) => {
       <Head title="Film Finder" />
       <GlobalStyle />
       <Search handleInput={handleInput} search={search} />
-      <MovieDisplay movies={trendingMovies}></MovieDisplay>
+      <MovieDisplay movies={trendingMovies} />
     </main>
   );
 };
