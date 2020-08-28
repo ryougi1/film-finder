@@ -19,7 +19,7 @@ const MovieDisplay = ({ movies }) => {
   return (
     <StyledMovieContent>
       {movies &&
-        movies.map(({ id, title, release_date, poster_path }) => {
+        movies.results.map(({ id, title, release_date, poster_path }) => {
           return (
             <StyledCardContainer key={id}>
               <Link href="/movies/[id]" as={`/movies/${id}`}>

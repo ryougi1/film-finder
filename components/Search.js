@@ -1,7 +1,12 @@
-const Search = ({ handleInput }) => {
+const Search = ({ handleInput, search }) => {
   return (
     <section>
-      <input type="text" placeholder="E.g. Spiderman" onChange={handleInput} />
+      <input
+        type="text"
+        placeholder="E.g. Spiderman"
+        onChange={handleInput}
+        onKeyPress={search}
+      />
     </section>
   );
 };
