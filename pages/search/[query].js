@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { Search, MovieDisplay } from '../../components';
 import { GlobalStyle } from '../../styles';
 import { searchMovie } from '../../lib/movies';
@@ -33,6 +34,10 @@ const SearchResult = ({ movieResults }) => {
       <MovieDisplay movies={movieResults} />
     </main>
   );
+};
+
+SearchResult.propTypes = {
+  movieResults: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default SearchResult;

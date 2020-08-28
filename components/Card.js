@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { theme } from '../styles';
 
 const { colors } = theme;
@@ -28,5 +29,11 @@ const Card = ({ title, releaseDate, posterLink }) => (
     </Details>
   </StyledContainer>
 );
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  posterLink: PropTypes.string.isRequired,
+};
 
 export default Card;

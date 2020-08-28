@@ -5,6 +5,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Card } from '../components';
 import { mixins } from '../styles';
 
@@ -38,5 +39,9 @@ const MovieDisplay = ({ movies }) => (
       ))}
   </StyledMovieContent>
 );
+
+MovieDisplay.propTypes = {
+  movies: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};
 
 export default MovieDisplay;

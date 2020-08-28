@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { Search, MovieDisplay } from '../components';
 import { GlobalStyle } from '../styles';
 import { getTrending } from '../lib/movies';
@@ -33,6 +34,10 @@ const Home = ({ trendingMovies }) => {
       <MovieDisplay movies={trendingMovies} />
     </main>
   );
+};
+
+Home.propTypes = {
+  trendingMovies: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default Home;
