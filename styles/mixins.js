@@ -1,4 +1,7 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
+import theme from './theme';
+
+const { colors } = theme;
 
 const mixins = {
   flexCenter: css`
@@ -9,6 +12,20 @@ const mixins = {
   flexBetween: css`
     display: flex;
     justify-content: space-between;
+  `,
+  link: css`
+    display: inline-block;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    color: inherit;
+    position: relative;
+    cursor: pointer;
+    &:hover,
+    &:active,
+    &:focus {
+      color: ${colors.red};
+      outline: 0;
+    }
   `,
 };
 

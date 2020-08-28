@@ -1,4 +1,5 @@
-import react, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const Search = ({ handleInput, search }) => {
   const inputElement = useRef(null);
@@ -21,6 +22,11 @@ const Search = ({ handleInput, search }) => {
       />
     </section>
   );
+};
+
+Search.propTypes = {
+  handleInput: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
 };
 
 export default Search;

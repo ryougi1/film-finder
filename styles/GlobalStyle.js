@@ -1,5 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import theme from "./theme";
+import { createGlobalStyle } from 'styled-components';
+import theme from './theme';
+
 const { colors } = theme;
 
 const GlobalStyle = createGlobalStyle`
@@ -17,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: ${colors.white};
     background-color: ${colors.bg};
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
