@@ -1,13 +1,13 @@
-/**
- * Since using StyledComponents generate dynamic classnames:
- * https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements
- * https://docs.cypress.io/guides/core-concepts/test-runner.html#Uniqueness
- */
 /// <reference types="cypress" />
 
-describe("Landing page hydration", () => {
+describe("Searching functionality and SRR", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/");
+    cy.get("input").type("harry potter{enter}");
+  });
+
+  it("URL correct", () => {
+    cy.url().should("eq", "http://localhost:3000/search/harry+potter");
   });
 
   it("Search bar is present", () => {
@@ -24,7 +24,7 @@ describe("Landing page hydration", () => {
     });
   });
 
-  it("20 trending movies are present", () => {
+  it("20 movies are present", () => {
     cy.get("[data-cy=moviecard]")
       .its("length")
       .then((lengthOfOptions) => {
