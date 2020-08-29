@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Search, MovieDisplay } from '../components';
-import { GlobalStyle } from '../styles';
 import { getTrending } from '../lib/movies';
 
 export async function getServerSideProps() {
@@ -29,7 +28,6 @@ const Home = ({ trendingMovies }) => {
   return (
     <main>
       <Head title="Film Finder" />
-      <GlobalStyle />
       <Search handleInput={handleInput} search={search} />
       <MovieDisplay movies={trendingMovies} />
     </main>

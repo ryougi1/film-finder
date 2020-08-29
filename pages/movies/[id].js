@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { GlobalStyle, mixins } from '../../styles';
+import { mixins } from '../../styles';
 import { getMovie } from '../../lib/movies';
 
 export async function getServerSideProps({ params }) {
@@ -50,7 +50,6 @@ const Movie = ({ movieDetails }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <GlobalStyle />
 
       <StyledContent>
         <StyledDetails>
