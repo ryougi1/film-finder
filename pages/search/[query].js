@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Search, MovieDisplay } from '../../components';
-import { searchMovie } from '../../lib/movies';
+import { searchMovie } from '../../lib';
 
 export async function getServerSideProps({ params }) {
   const movieResults = await searchMovie(params.query);

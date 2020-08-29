@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Search, MovieDisplay } from '../components';
-import { getTrending } from '../lib/movies';
+import { getTrending } from '../lib';
 
 export async function getServerSideProps() {
   const trendingMovies = await getTrending();

@@ -1,12 +1,14 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { mixins } from '../../styles';
-import { getMovie } from '../../lib/movies';
+import { getMovieById } from '../../lib';
 
 export async function getServerSideProps({ params }) {
-  const movieDetails = await getMovie(params.id);
+  const movieDetails = await getMovieById(params.id);
   return { props: { movieDetails } };
 }
 
@@ -63,7 +65,12 @@ const Movie = ({ movieDetails }) => {
           <p>{overview}</p>
           <p>
             Starring:
-            {stars.map((s) => `${s.name}, `)}
+            {stars &&
+              stars.map((s) => (
+                <Link href="/people/[id]" as={`/people/${s.id}`}>
+                  <a>{s.name}</a>
+                </Link>
+              ))}
           </p>
         </StyledDetails>
         <StyledImage src={posterLink} />
