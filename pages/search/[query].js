@@ -3,8 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Search, MovieDisplay } from '../../components';
-import { GlobalStyle } from '../../styles';
-import { searchMovie } from '../../lib/movies';
+import { searchMovie } from '../../lib';
 
 export async function getServerSideProps({ params }) {
   const movieResults = await searchMovie(params.query);
@@ -29,7 +28,6 @@ const SearchResult = ({ movieResults }) => {
   return (
     <main>
       <Head title="Film Finder" />
-      <GlobalStyle />
       <Search handleInput={handleInput} search={search} />
       <MovieDisplay movies={movieResults} />
     </main>
