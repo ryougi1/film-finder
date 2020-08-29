@@ -31,4 +31,11 @@ describe('Landing page hydration', () => {
         expect(20).to.be.equals(lengthOfOptions);
       });
   });
+
+  it('movies have images', () => {
+    cy.get('[data-cy=moviecard')
+      .find('img')
+      .should('have.attr', 'src')
+      .should('include', '.jpg');
+  });
 });

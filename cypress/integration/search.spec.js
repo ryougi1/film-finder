@@ -23,12 +23,21 @@ describe('Searching functionality and SRR', () => {
       expect(focused).to.have.attr('data-cy', 'searchBar');
     });
   });
+});
 
-  it('20 movies are present', () => {
+describe('Content exists', () => {
+  it('movies are present', () => {
     cy.get('[data-cy=moviecard]')
       .its('length')
       .then((lengthOfOptions) => {
-        expect(20).to.be.equals(lengthOfOptions);
+        expect(lengthOfOptions).to.be.greaterThan(0);
       });
+  });
+
+  it('movies have images', () => {
+    cy.get('[data-cy=moviecard')
+      .find('img')
+      .should('have.attr', 'src')
+      .should('include', '.jpg');
   });
 });
