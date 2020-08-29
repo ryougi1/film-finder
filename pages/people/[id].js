@@ -43,7 +43,11 @@ const Actor = ({ actorDetails }) => {
   const { name, birthday, biography } = actorDetails;
   const department = actorDetails.known_for_department;
   const birthPlace = actorDetails.place_of_birth;
-  const profileLink = `http://image.tmdb.org/t/p/w500${actorDetails.profile_path}`;
+  console.log(actorDetails.profile_path);
+  const profileLink =
+    actorDetails.profile_path === null
+      ? '/fine.jpg'
+      : `http://image.tmdb.org/t/p/w500${actorDetails.profile_path}`;
 
   return (
     <StyledContainer>
