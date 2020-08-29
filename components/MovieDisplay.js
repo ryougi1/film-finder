@@ -31,7 +31,11 @@ const MovieDisplay = ({ movies }) => (
               <Card
                 title={title}
                 releaseDate={release_date}
-                posterLink={`http://image.tmdb.org/t/p/w500${poster_path}`}
+                posterLink={
+                  poster_path === null
+                    ? '/fine.jpg'
+                    : `http://image.tmdb.org/t/p/w500${poster_path}`
+                }
               />
             </a>
           </Link>
