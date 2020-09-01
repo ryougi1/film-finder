@@ -7,7 +7,7 @@ describe('Searching functionality and SRR', () => {
   });
 
   it('URL correct', () => {
-    cy.url().should('eq', 'http://localhost:3000/search/harry+potter');
+    cy.url().should('contain', '/search/harry+potter/1');
   });
 
   it('Search bar is present', () => {

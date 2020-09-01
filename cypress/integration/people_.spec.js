@@ -2,7 +2,7 @@
 
 describe('People page', () => {
   beforeEach(() => {
-    const randId = Cypress._.random(0, 1e3);
+    const randId = Cypress._.random(0, 1e4);
     cy.visit(`http://localhost:3000/people/${randId}`);
   });
 
