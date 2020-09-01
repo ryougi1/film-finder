@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Heading, Date } from '../../components';
 import { mixins } from '../../styles';
 import { getActorById } from '../../lib';
 
@@ -27,6 +28,7 @@ const StyledContent = styled.div`
 
 const StyledImage = styled.img`
   position: relative;
+  max-height: 600px;
   object-fit: contain;
   border-radius: 10px;
 `;
@@ -39,14 +41,17 @@ const StyledDetails = styled.div`
   }
 `;
 
+const StyledSubHeading = styled.h3`
+  margin: 10px 0px 10px 0px;
+`;
+
 const Actor = ({ actorDetails }) => {
   const { name, birthday, biography } = actorDetails;
   const department = actorDetails.known_for_department;
-  const birthPlace = actorDetails.place_of_birth;
   const profileLink =
     actorDetails.profile_path === null || undefined
-      ? '/fine.jpg'
-      : `http://image.tmdb.org/t/p/${actorDetails.profile_path}`;
+      ? '/travolta.png'
+      : `http://image.tmdb.org/t/p/w500/${actorDetails.profile_path}`;
 
   return (
     <StyledContainer>
@@ -56,12 +61,14 @@ const Actor = ({ actorDetails }) => {
 
       <StyledContent>
         <StyledDetails>
-          <p>{name}</p>
-          <p>{department}</p>
+          <Heading value={name} />
+          <StyledSubHeading>
+            {`Birthday: `}
+            <Date dateString={birthday} context="description" />
+          </StyledSubHeading>
+          <StyledSubHeading>{`Department: ${department}`}</StyledSubHeading>
+          <StyledSubHeading>Biography:</StyledSubHeading>
           <p>{biography}</p>
-          <p>
-            {birthday} in {birthPlace}
-          </p>
         </StyledDetails>
         <StyledImage src={profileLink} />
       </StyledContent>

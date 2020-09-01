@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Search, MovieDisplay } from '../components';
+import styled from 'styled-components';
+import { Search, MovieDisplay, Heading } from '../components';
 import { getTrending } from '../lib';
+import { mixins } from '../styles';
 
 export async function getServerSideProps() {
   const trendingMovies = await getTrending();
   return { props: { trendingMovies } };
 }
+
+const StyledContainer = styled.div`
+  ${mixins.flexCenter};
+  flex-direction: column;
+  overflow-y: scroll;
+`;
 
 const Home = ({ trendingMovies }) => {
   const [query, setQuery] = useState('');
@@ -26,11 +34,12 @@ const Home = ({ trendingMovies }) => {
   };
 
   return (
-    <main>
+    <StyledContainer>
       <Head title="Film Finder" />
       <Search handleInput={handleInput} search={search} />
+      <Heading value="Trending right now: " />
       <MovieDisplay movies={trendingMovies} />
-    </main>
+    </StyledContainer>
   );
 };
 

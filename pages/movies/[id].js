@@ -4,6 +4,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { Heading, Date } from '../../components';
 import { mixins } from '../../styles';
 import { getMovieById } from '../../lib';
 
@@ -29,6 +30,7 @@ const StyledContent = styled.div`
 
 const StyledImage = styled.img`
   position: relative;
+  max-height: 600px;
   object-fit: contain;
   border-radius: 10px;
 `;
@@ -41,14 +43,28 @@ const StyledDetails = styled.div`
   }
 `;
 
+const StyledSubHeading = styled.h3`
+  margin: 10px 0px 10px 0px;
+`;
+
 const Movie = ({ movieDetails }) => {
   const { title, runtime, genres, overview } = movieDetails;
   const posterLink =
     movieDetails.poster_path === null
-      ? '/fine.jpg'
+      ? '/travolta.png'
       : `http://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
   const releaseDate = movieDetails.release_date;
   const stars = movieDetails.credits.cast.slice(0, 3);
+
+  const getRuntime = () => {
+    const hrs = Math.floor(runtime / 60);
+    const mins = runtime % 60;
+    return `${hrs}h ${mins}min`;
+  };
+
+  const getGenres = () => {
+    return genres.map((g) => `${g.name}`).join(' ');
+  };
 
   return (
     <StyledContainer>
@@ -58,20 +74,21 @@ const Movie = ({ movieDetails }) => {
 
       <StyledContent>
         <StyledDetails>
-          <p>{title}</p>
-          <p>
-            {releaseDate}
-            {runtime}
-            minutes
-            {genres.map((g) => `${g.name} `)}
-          </p>
+          <Heading value={title} />
+          <StyledSubHeading>
+            {`Release date: `}
+            <Date dateString={releaseDate} context="description" />
+          </StyledSubHeading>
+          <StyledSubHeading>{`Runtime: ${getRuntime()}`}</StyledSubHeading>
+          <StyledSubHeading>{`Genres: ${getGenres()}`}</StyledSubHeading>
+          <StyledSubHeading>Overview:</StyledSubHeading>
           <p>{overview}</p>
+          <StyledSubHeading>Starring: </StyledSubHeading>
           <p>
-            Starring:
             {stars &&
               stars.map((s) => (
                 <Link href="/people/[id]" as={`/people/${s.id}`}>
-                  <a>{s.name}</a>
+                  <a>{`${s.name}, `}</a>
                 </Link>
               ))}
           </p>
