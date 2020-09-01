@@ -11,11 +11,11 @@ const { colors } = theme;
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
   border: 0px solid ${colors.black};
-  width: 20%;
-  min-width: 200;
-  padding: 5px;
-  margin: 10px;
+  width: 100%;
+  min-width: 400;
   cursor: pointer;
   z-index: 5;
 `;
@@ -27,12 +27,12 @@ const StyledImg = styled.img`
 `;
 
 const StyledText = styled.h3`
-  font-size: 18;
+  font-size: 22;
   font-weight: 600;
+  margin-top: 10px;
   padding: 10px;
-  background: ${colors.black};
-  flex: 1 1 100%;
-  transition: 0.4s ease-out;
+  background: ${colors.bg};
+  line-height: 100%;
 `;
 
 const Card = ({ title, releaseDate, posterLink }) => {

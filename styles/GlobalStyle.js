@@ -38,12 +38,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    display: block; 
+    border: 0px solid red; 
     text-decoration: none;
     text-decoration-skip-ink: auto;
     color: inherit;
     cursor: pointer;
-    border:0px solid red; 
-    display:inline-block; 
     line-height:0;
   }
 `;

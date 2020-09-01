@@ -15,11 +15,11 @@ const App = ({ Component, pageProps }) => {
       <GlobalStyle />
       <Layout>
         <Component {...pageProps} />
-        <style jsx="true" global>
+        {/* <style jsx="true" global>
           {`
             @import url('<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">');
           `}
-        </style>
+        </style> */}
       </Layout>
     </ThemeProvider>
   );

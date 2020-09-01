@@ -14,12 +14,18 @@ const StyledCardContainer = styled.section`
   margin: 0px 25px 10px 25px;
 `;
 
+const StyledAnchor = styled.a`
+  width: 20%;
+  padding: 5px;
+  margin: 10px;
+`;
+
 const MovieDisplay = ({ movies }) => (
   <StyledCardContainer>
     {movies &&
       movies.results.map(({ id, title, release_date, poster_path }) => (
         <Link href="/movies/[id]" as={`/movies/${id}`} key={id}>
-          <a>
+          <StyledAnchor>
             <Card
               key={id}
               title={title}
@@ -30,7 +36,7 @@ const MovieDisplay = ({ movies }) => (
                   : `http://image.tmdb.org/t/p/w500${poster_path}`
               }
             />
-          </a>
+          </StyledAnchor>
         </Link>
       ))}
   </StyledCardContainer>

@@ -70,7 +70,7 @@ const Movie = ({ movieDetails }) => {
             Starring:
             {stars &&
               stars.map((s) => (
-                <Link href="/people/[id]" as={`/people/${s.id}`}>
+                <Link href="/people/[id]" as={`/people/${s.id}`} key={s.id}>
                   <a>{s.name}</a>
                 </Link>
               ))}
