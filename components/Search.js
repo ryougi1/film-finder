@@ -9,7 +9,7 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 75px;
+  margin-top: 90px;
   form {
     background-color: transparent;
     border-radius: 5px;
@@ -54,7 +54,7 @@ const Search = ({ handleInput, search }) => {
           e.preventDefault();
         }}
       >
-        <h1>FIND YOUR FILM</h1>
+        <h1>Find Your Film</h1>
         <input
           type="text"
           placeholder="E.g. Spiderman"

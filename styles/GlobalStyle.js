@@ -18,10 +18,12 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     color: ${colors.white};
-    background-color: ${colors.black};
+    background-color: ${colors.bg};
     margin: 0;
     width: 100%;
     min-height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -32,8 +34,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 38px;
-    font-weight: 500;
+    font-size: 28px;
+    font-weight: 700;
   }
 `;
 
