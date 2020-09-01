@@ -21,7 +21,7 @@ const Home = ({ trendingMovies }) => {
   const search = (e) => {
     if (e.key === 'Enter' && query.length > 0) {
       const sanQuery = query.replace(/\s/g, '+');
-      router.push('/search/[query]', `/search/${sanQuery}`);
+      router.push('/search/[query]/[pg]', `/search/${sanQuery}/1`);
     }
   };
 
