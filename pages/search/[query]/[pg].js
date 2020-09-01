@@ -13,12 +13,13 @@ export async function getServerSideProps({ params }) {
       movies: res,
       currPage: +params.pg,
       totPage: +res.total_pages,
+      totResults: +res.total_results,
     },
   };
 }
 
-const SearchResult = ({ query, movies, currPage, totPage }) => {
-  // const { query, currPage, totPage, movies } = props;
+const SearchResult = ({ query, movies, currPage, totPage, totResults }) => {
+  console.log(totResults);
   const [newQuery, setQuery] = useState('');
   const router = useRouter();
 
@@ -46,13 +47,16 @@ const SearchResult = ({ query, movies, currPage, totPage }) => {
     <main>
       <Head title="Film Finder" />
       <Search handleInput={handleInput} search={search} />
-      <div>{currPage}</div>
-      <div>{totPage}</div>
+      <div>Searched for: {query}</div>
+      <div>Total results: {totResults}</div>
       <MovieDisplay movies={movies} />
-      <button onClick={prevPage} disabled={currPage <= 1}>
+      <div>
+        Page: {currPage} of {totPage}
+      </div>
+      <button type="button" onClick={prevPage} disabled={currPage <= 1}>
         Prev
       </button>
-      <button onClick={nextPage} disabled={currPage === totPage}>
+      <button type="button" onClick={nextPage} disabled={currPage === totPage}>
         Next
       </button>
     </main>
@@ -64,6 +68,7 @@ SearchResult.propTypes = {
   movies: PropTypes.oneOfType([PropTypes.object]).isRequired,
   currPage: PropTypes.number.isRequired,
   totPage: PropTypes.number.isRequired,
+  totResults: PropTypes.number.isRequired,
 };
 
 export default SearchResult;
