@@ -45,7 +45,7 @@ const Actor = ({ actorDetails }) => {
   const birthPlace = actorDetails.place_of_birth;
   const profileLink =
     actorDetails.profile_path === null || undefined
-      ? '/fine.jpg'
+      ? '/travolta.png'
       : `http://image.tmdb.org/t/p/${actorDetails.profile_path}`;
 
   return (

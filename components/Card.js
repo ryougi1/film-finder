@@ -13,15 +13,17 @@ const StyledContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  border: 0px solid ${colors.black};
-  width: 100%;
-  min-width: 400;
+  border: 4px solid ${colors.black};
+  background: ${colors.black};
+  width: 350px;
+  min-height: 500px;
   cursor: pointer;
   z-index: 5;
 `;
 
 const StyledImg = styled.img`
   width: 100%;
+  max-height: 450px;
   display: block;
   object-fit: cover;
 `;
@@ -31,7 +33,6 @@ const StyledText = styled.h3`
   font-weight: 600;
   margin-top: 10px;
   padding: 10px;
-  background: ${colors.bg};
   line-height: 100%;
 `;
 

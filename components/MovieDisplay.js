@@ -32,7 +32,7 @@ const MovieDisplay = ({ movies }) => (
               releaseDate={release_date}
               posterLink={
                 poster_path === null
-                  ? '/fine.jpg'
+                  ? '/travolta.png'
                   : `http://image.tmdb.org/t/p/w500${poster_path}`
               }
             />

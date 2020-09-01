@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 import { parseISO, format } from 'date-fns';
 
 const Date = ({ dateString, context }) => {
-  const rawDate = parseISO(dateString);
-  let date;
-  switch (context) {
-    case 'card':
-      date = format(rawDate, 'yyyy');
-      break;
-    case 'description':
-      date = format(rawDate, 'LLL do, yyyy');
-      break;
-    default:
-      return 'XXXX';
+  try {
+    const rawDate = parseISO(dateString);
+    let date;
+    switch (context) {
+      case 'card':
+        date = format(rawDate, 'yyyy');
+        break;
+      case 'description':
+        date = format(rawDate, 'LLL do, yyyy');
+        break;
+      default:
+        return '';
+    }
+    return <time dateTime={dateString}>{date}</time>;
+  } catch (err) {
+    console.log(`Caught error when parsing date: ${dateString}`, err.message);
+    return '';
   }
-
-  return <time dateTime={dateString}>{date}</time>;
 };
 
 Date.propTypes = {

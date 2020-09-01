@@ -45,7 +45,7 @@ const Movie = ({ movieDetails }) => {
   const { title, runtime, genres, overview } = movieDetails;
   const posterLink =
     movieDetails.poster_path === null
-      ? '/fine.jpg'
+      ? '/travolta.png'
       : `http://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
   const releaseDate = movieDetails.release_date;
   const stars = movieDetails.credits.cast.slice(0, 3);

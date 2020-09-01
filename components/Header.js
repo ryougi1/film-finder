@@ -10,7 +10,7 @@ const StyledContainer = styled.header`
   ${mixins.flexBetween};
   position: fixed;
   top: 0;
-  padding: 10px;
+  padding: 10px 0px 10px 25px;
   background-color: ${colors.black};
   width: 100%;
   z-index: 10;
