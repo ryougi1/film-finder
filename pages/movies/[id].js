@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { Heading, Date } from '../../components';
 import { mixins } from '../../styles';
@@ -52,7 +52,7 @@ const Movie = ({ movieDetails }) => {
   const posterLink =
     movieDetails.poster_path === null
       ? '/travolta.png'
-      : `http://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
+      : `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
   const releaseDate = movieDetails.release_date;
   const stars = movieDetails.credits.cast.slice(0, 3);
 
@@ -66,36 +66,44 @@ const Movie = ({ movieDetails }) => {
     return genres.map((g) => `${g.name}`).join(' ');
   };
 
-  return (
-    <StyledContainer>
-      <Head>
-        <title>{title}</title>
-      </Head>
+  const SEO = {
+    title: `Film Finder | ${title}`,
+    description: `Details for ${title}`,
+    openGraph: {
+      title: `Film Finder | ${title}`,
+      description: `Details for ${title}`,
+    },
+  };
 
-      <StyledContent>
-        <StyledDetails>
-          <Heading value={title} />
-          <StyledSubHeading>
-            {`Release date: `}
-            <Date dateString={releaseDate} context="description" />
-          </StyledSubHeading>
-          <StyledSubHeading>{`Runtime: ${getRuntime()}`}</StyledSubHeading>
-          <StyledSubHeading>{`Genres: ${getGenres()}`}</StyledSubHeading>
-          <StyledSubHeading>Overview:</StyledSubHeading>
-          <p>{overview}</p>
-          <StyledSubHeading>Starring: </StyledSubHeading>
-          <p>
-            {stars &&
-              stars.map((s) => (
-                <Link href="/people/[id]" as={`/people/${s.id}`}>
-                  <a>{`${s.name}, `}</a>
-                </Link>
-              ))}
-          </p>
-        </StyledDetails>
-        <StyledImage src={posterLink} />
-      </StyledContent>
-    </StyledContainer>
+  return (
+    <>
+      <NextSeo {...SEO} />
+      <StyledContainer>
+        <StyledContent>
+          <StyledDetails>
+            <Heading value={title} />
+            <StyledSubHeading>
+              {`Release date: `}
+              <Date dateString={releaseDate} context="description" />
+            </StyledSubHeading>
+            <StyledSubHeading>{`Runtime: ${getRuntime()}`}</StyledSubHeading>
+            <StyledSubHeading>{`Genres: ${getGenres()}`}</StyledSubHeading>
+            <StyledSubHeading>Overview:</StyledSubHeading>
+            <p>{overview}</p>
+            <StyledSubHeading>Starring: </StyledSubHeading>
+            <p>
+              {stars &&
+                stars.map((s) => (
+                  <Link href="/people/[id]" as={`/people/${s.id}`} key={s.id}>
+                    <a>{`${s.name}, `}</a>
+                  </Link>
+                ))}
+            </p>
+          </StyledDetails>
+          <StyledImage src={posterLink} alt="Poster" />
+        </StyledContent>
+      </StyledContainer>
+    </>
   );
 };
 

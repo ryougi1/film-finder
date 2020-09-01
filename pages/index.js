@@ -15,7 +15,6 @@ export async function getServerSideProps() {
 const StyledContainer = styled.div`
   ${mixins.flexCenter};
   flex-direction: column;
-  overflow-y: scroll;
 `;
 
 const Home = ({ trendingMovies }) => {

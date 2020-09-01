@@ -25,7 +25,6 @@ export async function getServerSideProps({ params }) {
 const StyledContainer = styled.div`
   ${mixins.flexCenter};
   flex-direction: column;
-  overflow-y: scroll;
 `;
 
 const StyledButtonContainer = styled.div`

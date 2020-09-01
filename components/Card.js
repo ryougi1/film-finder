@@ -39,7 +39,7 @@ const StyledText = styled.h3`
 const Card = ({ title, releaseDate, posterLink }) => {
   return (
     <StyledContainer data-cy="moviecard">
-      <StyledImg src={posterLink} />
+      <StyledImg src={posterLink} alt="Poster" />
       <StyledText>
         {`${title} - `}
         <Date dateString={releaseDate} context="card" />

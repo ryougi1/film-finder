@@ -1,7 +1,7 @@
 import React from 'react';
-import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { NextSeo } from 'next-seo';
 import { Heading, Date } from '../../components';
 import { mixins } from '../../styles';
 import { getActorById } from '../../lib';
@@ -51,28 +51,36 @@ const Actor = ({ actorDetails }) => {
   const profileLink =
     actorDetails.profile_path === null || undefined
       ? '/travolta.png'
-      : `http://image.tmdb.org/t/p/w500/${actorDetails.profile_path}`;
+      : `https://image.tmdb.org/t/p/w500/${actorDetails.profile_path}`;
+
+  const SEO = {
+    title: `Film Finder | ${name}`,
+    description: `Details for ${name}`,
+    openGraph: {
+      title: `Film Finder | ${name}`,
+      description: `Details for ${name}`,
+    },
+  };
 
   return (
-    <StyledContainer>
-      <Head>
-        <title>{name}</title>
-      </Head>
-
-      <StyledContent>
-        <StyledDetails>
-          <Heading value={name} />
-          <StyledSubHeading>
-            {`Birthday: `}
-            <Date dateString={birthday} context="description" />
-          </StyledSubHeading>
-          <StyledSubHeading>{`Department: ${department}`}</StyledSubHeading>
-          <StyledSubHeading>Biography:</StyledSubHeading>
-          <p>{biography}</p>
-        </StyledDetails>
-        <StyledImage src={profileLink} />
-      </StyledContent>
-    </StyledContainer>
+    <>
+      <NextSeo {...SEO} />
+      <StyledContainer>
+        <StyledContent>
+          <StyledDetails>
+            <Heading value={name} />
+            <StyledSubHeading>
+              {`Birthday: `}
+              <Date dateString={birthday} context="description" />
+            </StyledSubHeading>
+            <StyledSubHeading>{`Department: ${department}`}</StyledSubHeading>
+            <StyledSubHeading>Biography:</StyledSubHeading>
+            <p>{biography}</p>
+          </StyledDetails>
+          <StyledImage src={profileLink} alt="Profile" />
+        </StyledContent>
+      </StyledContainer>
+    </>
   );
 };
 

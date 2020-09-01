@@ -57,6 +57,7 @@ const Search = ({ handleInput, search }) => {
         }}
       >
         <h1>Find Your Film</h1>
+        <label htmlFor="search"> </label>
         <input
           type="text"
           placeholder="E.g. Spiderman"
@@ -64,6 +65,7 @@ const Search = ({ handleInput, search }) => {
           onKeyPress={search}
           ref={inputElement}
           data-cy="searchBar"
+          id="search"
         />
       </form>
     </StyledContainer>
