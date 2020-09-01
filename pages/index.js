@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Search, MovieDisplay } from '../components';
 import { getTrending } from '../lib';
+import { mixins } from '../styles';
 
 export async function getServerSideProps() {
   const trendingMovies = await getTrending();
   return { props: { trendingMovies } };
 }
+
+const StyledContainer = styled.div`
+  overflow-y: scroll;
+`;
 
 const Home = ({ trendingMovies }) => {
   const [query, setQuery] = useState('');
@@ -26,11 +32,11 @@ const Home = ({ trendingMovies }) => {
   };
 
   return (
-    <main>
+    <StyledContainer>
       <Head title="Film Finder" />
       <Search handleInput={handleInput} search={search} />
       <MovieDisplay movies={trendingMovies} />
-    </main>
+    </StyledContainer>
   );
 };
 
