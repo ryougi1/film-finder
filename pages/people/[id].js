@@ -43,11 +43,10 @@ const Actor = ({ actorDetails }) => {
   const { name, birthday, biography } = actorDetails;
   const department = actorDetails.known_for_department;
   const birthPlace = actorDetails.place_of_birth;
-  console.log(actorDetails.profile_path);
   const profileLink =
-    actorDetails.profile_path === null
+    actorDetails.profile_path === null || undefined
       ? '/fine.jpg'
-      : `http://image.tmdb.org/t/p/w500${actorDetails.profile_path}`;
+      : `http://image.tmdb.org/t/p/${actorDetails.profile_path}`;
 
   return (
     <StyledContainer>

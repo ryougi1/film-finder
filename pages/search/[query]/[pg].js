@@ -19,7 +19,6 @@ export async function getServerSideProps({ params }) {
 }
 
 const SearchResult = ({ query, movies, currPage, totPage, totResults }) => {
-  console.log(totResults);
   const [newQuery, setQuery] = useState('');
   const router = useRouter();
 
