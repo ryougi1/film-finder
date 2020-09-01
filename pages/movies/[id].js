@@ -44,7 +44,7 @@ const StyledDetails = styled.div`
 `;
 
 const StyledSubHeading = styled.h3`
-  margin: 3px 0px 3px 0px;
+  margin: 10px 0px 10px 0px;
 `;
 
 const Movie = ({ movieDetails }) => {
