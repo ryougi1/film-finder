@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledHeading = styled.h2`
-  font-size: 28px
+  font-size: 38px
   font-weight: 700
 `;
 
