@@ -10,11 +10,13 @@ const StyledContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin-top: 90px;
+  margin-bottom: 50px;
   form {
     background-color: transparent;
     border-radius: 5px;
     padding: 1rem;
     text-align: center;
+    min-width: 50vw;
     input {
       background-color: ${colors.white};
       outline: 0;

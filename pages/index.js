@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Search, MovieDisplay } from '../components';
+import { Search, MovieDisplay, Heading } from '../components';
 import { getTrending } from '../lib';
 import { mixins } from '../styles';
 
@@ -13,6 +13,8 @@ export async function getServerSideProps() {
 }
 
 const StyledContainer = styled.div`
+  ${mixins.flexCenter};
+  flex-direction: column;
   overflow-y: scroll;
 `;
 
@@ -35,6 +37,7 @@ const Home = ({ trendingMovies }) => {
     <StyledContainer>
       <Head title="Film Finder" />
       <Search handleInput={handleInput} search={search} />
+      <Heading value="Trending right now: " />
       <MovieDisplay movies={trendingMovies} />
     </StyledContainer>
   );

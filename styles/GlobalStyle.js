@@ -30,21 +30,21 @@ const GlobalStyle = createGlobalStyle`
     color: #ffffff;
     margin-top: 0;
     margin-bottom: 1rem;
-    font-weight: 500;
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 700;
   }
 
   a {
-    display: inline-block;
     text-decoration: none;
     text-decoration-skip-ink: auto;
     color: inherit;
-    position: relative;
     cursor: pointer;
+    border:0px solid red; 
+    display:inline-block; 
+    line-height:0;
   }
 `;
 
